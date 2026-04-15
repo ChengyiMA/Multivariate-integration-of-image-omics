@@ -31,24 +31,19 @@ images = pd.read_csv("/data/image_feature_t_sorted_tibble.txt",sep="\t",header=0
 # In[ ]:
 
 
-expr_log = np.log2(expr + 1) 
-images_log = np.log2(images + 0.01) 
-
-
-# In[ ]:
-
-
 from sklearn.preprocessing import StandardScaler  
-X_img_scaled = pd.DataFrame( 
-    StandardScaler().fit_transform(images_log), 
-    index=images.index, 
-    columns=images.columns 
-) 
 X_expr_scaled = pd.DataFrame( 
-    StandardScaler().fit_transform(expr_log), 
+    StandardScaler().fit_transform(expr), 
     index=expr.index, 
     columns=expr.columns 
 ) 
+
+X_img_scaled = pd.DataFrame( 
+    StandardScaler().fit_transform(images), 
+    index=images.index, 
+    columns=images.columns 
+) 
+
 
 
 # In[ ]:
